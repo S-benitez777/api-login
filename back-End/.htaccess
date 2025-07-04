@@ -1,0 +1,13 @@
+# Evita listar archivos y protege el acceso directo
+Options -Indexes
+
+# Solo permite peticiones desde tu dominio (CORS básico)
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+</IfModule>
+
+# Bloquea acceso a archivos sensibles
+<FilesMatch "\.(env|sql|htaccess|ini|log|sh)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
